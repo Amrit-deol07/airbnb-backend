@@ -5,423 +5,232 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Airbnb - Find your place to stay</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            color: #222;
-            background: #fff;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 6%;
-            border-bottom: 1px solid #eee;
-        }
-
-        .logo {
-            color: #ff385c;
-            font-size: 30px;
-            font-weight: bold;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-        }
-
-        .signup {
-            background: #ff385c;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 25px;
-        }
-
-        .hero {
-            min-height: 390px;
-            padding: 65px 6%;
-            color: white;
-            background:
-                linear-gradient(90deg, #0009, #0002),
-                url("https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1800&q=85")
-                center/cover;
-        }
-
-        .hero h1 {
-            font-size: clamp(32px, 5vw, 52px);
-            max-width: 550px;
-            margin-bottom: 15px;
-        }
-
-        .hero p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
-
-        .search {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: white;
-            color: #333;
-            padding: 15px;
-            border-radius: 50px;
-            margin-top: 35px;
-            max-width: 1050px;
-            box-shadow: 0 4px 20px #0002;
-        }
-
-        .search-field {
-            flex: 1;
-            min-width: 0;
-            padding: 5px 12px;
-            border-right: 1px solid #ddd;
-        }
-
-        .search-field label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        .search-field input {
-            width: 100%;
-            border: none;
-            outline: none;
-            font-size: 14px;
-            background: transparent;
-        }
-
-        .search button {
-            border: none;
-            background: #ff385c;
-            color: white;
-            padding: 17px 25px;
-            border-radius: 35px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .homes {
-            padding: 45px 6%;
-        }
-
-        .section-heading {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .section-heading h2 {
-            font-size: 30px;
-        }
-
-        .homes > p {
-            color: #717171;
-            margin-bottom: 25px;
-        }
-
-        .home-grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 25px;
-        }
-
-        .home-card {
-            cursor: pointer;
-            min-width: 0;
-        }
-
-        .home-image {
-            position: relative;
-        }
-
-        .home-image img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 12px;
-            display: block;
-        }
-
-        .heart {
-            position: absolute;
-            right: 14px;
-            top: 12px;
-            border: none;
-            background: transparent;
-            color: white;
-            font-size: 29px;
-            cursor: pointer;
-            text-shadow: 0 1px 4px #333;
-        }
-
-        .home-card h3 {
-            font-size: 17px;
-            margin: 12px 0 7px;
-        }
-
-        .location, .rating {
-            color: #717171;
-            font-size: 14px;
-            margin-bottom: 7px;
-        }
-
-        .price {
-            margin-top: 12px;
-            font-size: 15px;
-        }
-
-        footer {
-            border-top: 1px solid #eee;
-            padding: 25px 6%;
-            color: #717171;
-            font-size: 14px;
-        }
-
-        @media (max-width: 1000px) {
-            .home-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            nav {
-                gap: 12px;
-            }
-        }
-
-        @media (max-width: 650px) {
-            header {
-                padding: 18px 5%;
-            }
-
-            nav a:not(.signup) {
-                display: none;
-            }
-
-            .logo {
-                font-size: 24px;
-            }
-
-            .hero {
-                padding: 45px 5%;
-            }
-
-            .search {
-                flex-direction: column;
-                align-items: stretch;
-                border-radius: 20px;
-            }
-
-            .search-field {
-                border-right: none;
-                border-bottom: 1px solid #eee;
-                padding: 12px;
-            }
-
-            .search button {
-                width: 100%;
-            }
-
-            .homes {
-                padding: 30px 5%;
-            }
-
-            .home-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .home-image img {
-                height: 250px;
-            }
-
-            .section-heading h2 {
-                font-size: 25px;
-            }
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="m-0 bg-white font-sans text-[#222]">
 
-    <header>
-        <div class="logo">⌂ airbnb</div>
+    <!-- Header -->
+    <header class="flex items-center justify-between border-b border-gray-100 px-[5%] py-5 md:px-[6%]">
+        <div class="text-2xl font-bold text-[#ff385c] md:text-3xl">⌂ airbnb</div>
 
-        <nav>
-            <a href="#homes">Stays</a>
-            <a href="#homes">Experiences</a>
-            <a href="#homes">Online Experiences</a>
-            <a href="#">Log in</a>
-            <a href="#" class="signup">Sign up</a>
+        <nav class="flex items-center gap-3 md:gap-6">
+            <a href="#homes" class="hidden font-medium text-[#333] sm:inline">Stays</a>
+            <a href="#homes" class="hidden font-medium text-[#333] md:inline">Experiences</a>
+            <a href="#homes" class="hidden font-medium text-[#333] lg:inline">Online Experiences</a>
+            <a href="#" class="font-medium text-[#333]">Log in</a>
+            <a href="#" class="rounded-full bg-[#ff385c] px-4 py-3 text-white md:px-5">Sign up</a>
         </nav>
     </header>
-    <main>
-        <a href="/host/add-home">Add Home</a>
+
+    <!-- Add Home -->
+    <main class="px-[5%] py-3 md:px-[6%]">
+        <a href="/host/add-home" class="font-medium text-[#ff385c] underline">Add Home</a>
     </main>
-    <section class="hero">
-        <h1>Find the perfect place to stay</h1>
-        <p>Discover unique homes, unforgettable experiences,<br>
-           and a place to call your own.</p>
 
-        <form class="search" id="searchForm">
-            <div class="search-field">
-                <label for="location">Location</label>
-                <input id="location" type="text"
-                       placeholder="Where are you going?">
+    <!-- Hero Section -->
+    <section
+        class="min-h-[390px] bg-cover bg-center px-[5%] py-12 text-white md:px-[6%] md:py-[65px]"
+        style="background-image: linear-gradient(90deg, #0009, #0002), url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1800&q=85')">
+
+        <h1 class="mb-4 max-w-[550px] text-4xl font-bold md:text-5xl">
+            Find the perfect place to stay
+        </h1>
+
+        <p class="text-base leading-relaxed md:text-lg">
+            Discover unique homes, unforgettable experiences,<br class="hidden sm:block">
+            and a place to call your own.
+        </p>
+
+        <!-- Search Form -->
+        <form id="searchForm"
+            class="mt-8 flex max-w-[1050px] flex-col gap-2 rounded-2xl bg-white p-4 text-[#333] shadow-lg md:flex-row md:items-center md:gap-3 md:rounded-full">
+
+            <div class="min-w-0 flex-1 border-b border-gray-200 px-3 py-3 md:border-b-0 md:border-r">
+                <label for="location" class="mb-2 block font-bold">Location</label>
+                <input id="location" type="text" placeholder="Where are you going?"
+                    class="w-full bg-transparent text-sm outline-none">
             </div>
 
-            <div class="search-field">
-                <label for="checkin">Check in</label>
-                <input id="checkin" type="date">
+            <div class="min-w-0 flex-1 border-b border-gray-200 px-3 py-3 md:border-b-0 md:border-r">
+                <label for="checkin" class="mb-2 block font-bold">Check in</label>
+                <input id="checkin" type="date"
+                    class="w-full bg-transparent text-sm outline-none">
             </div>
 
-            <div class="search-field">
-                <label for="checkout">Check out</label>
-                <input id="checkout" type="date">
+            <div class="min-w-0 flex-1 border-b border-gray-200 px-3 py-3 md:border-b-0 md:border-r">
+                <label for="checkout" class="mb-2 block font-bold">Check out</label>
+                <input id="checkout" type="date"
+                    class="w-full bg-transparent text-sm outline-none">
             </div>
 
-            <div class="search-field">
-                <label for="guests">Guests</label>
-                <input id="guests" type="number"
-                       min="1" value="1">
+            <div class="min-w-0 flex-1 px-3 py-3">
+                <label for="guests" class="mb-2 block font-bold">Guests</label>
+                <input id="guests" type="number" min="1" value="1"
+                    class="w-full bg-transparent text-sm outline-none">
             </div>
 
-            <button type="submit">⌕ Search</button>
+            <button type="submit"
+                class="shrink-0 cursor-pointer rounded-full bg-[#ff385c] px-6 py-4 text-white transition hover:bg-[#e31c5f]">
+                ⌕ Search
+            </button>
         </form>
     </section>
 
-    <section class="homes" id="homes">
-        <div class="section-heading">
-            <h2>Popular homes</h2>
-            <a href="#homes" style="color:#222">See all →</a>
+    <!-- Popular Homes -->
+    <section id="homes" class="px-[5%] py-8 md:px-[6%] md:py-11">
+
+        <div class="mb-3 flex items-center justify-between">
+            <h2 class="text-2xl font-bold md:text-3xl">Popular homes</h2>
+            <a href="#homes" class="text-[#222] underline">See all →</a>
         </div>
 
-        <p>Get inspired by some of our top-rated homes.</p>
+        <p class="mb-6 text-[#717171]">
+            Get inspired by some of our top-rated homes.
+        </p>
 
-        <div class="home-grid" id="homeGrid">
+        <div id="homeGrid" class="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-4">
 
-            <article class="home-card">
-                <div class="home-image">
-                    <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=700&q=80"
-                         alt="Modern villa with swimming pool">
-                    <button class="heart" aria-label="Add to favorites"
-                            type="button">♡</button>
+            <!-- Home 1 -->
+            <article class="min-w-0 cursor-pointer">
+                <div class="relative">
+                    <img
+                        src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=700&q=80"
+                        alt="Modern villa with swimming pool"
+                        class="h-[250px] w-full rounded-xl object-cover lg:h-[220px]">
+
+                    <button type="button"
+                        aria-label="Add to favorites"
+                        class="favorite absolute right-3 top-3 cursor-pointer bg-transparent text-3xl text-white">
+                        ♡
+                    </button>
                 </div>
-                <h3>Modern Villa with Pool</h3>
-                <p class="location">Goa, India</p>
-                <p class="rating">★ 4.8 (124)</p>
-                <p class="price"><strong>₹4,500</strong> / night</p>
+
+                <h3 class="mb-2 mt-3 text-[17px] font-semibold">Modern Villa with Pool</h3>
+                <p class="location mb-2 text-sm text-[#717171]">Goa, India</p>
+                <p class="mb-2 text-sm text-[#717171]">★ 4.8 (124)</p>
+                <p class="mt-3 text-[15px]"><strong>₹4,500</strong> / night</p>
             </article>
 
-            <article class="home-card">
-                <div class="home-image">
-                    <img src="https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=700&q=80"
-                         alt="Cozy wooden cabin in the woods">
-                    <button class="heart" aria-label="Add to favorites"
-                            type="button">♡</button>
+            <!-- Home 2 -->
+            <article class="min-w-0 cursor-pointer">
+                <div class="relative">
+                    <img
+                        src="https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=700&q=80"
+                        alt="Cozy wooden cabin"
+                        class="h-[250px] w-full rounded-xl object-cover lg:h-[220px]">
+
+                    <button type="button"
+                        aria-label="Add to favorites"
+                        class="favorite absolute right-3 top-3 cursor-pointer bg-transparent text-3xl text-white">
+                        ♡
+                    </button>
                 </div>
-                <h3>Cozy Cabin in the Woods</h3>
-                <p class="location">Manali, India</p>
-                <p class="rating">★ 4.7 (89)</p>
-                <p class="price"><strong>₹3,200</strong> / night</p>
+
+                <h3 class="mb-2 mt-3 text-[17px] font-semibold">Cozy Cabin in the Woods</h3>
+                <p class="location mb-2 text-sm text-[#717171]">Manali, India</p>
+                <p class="mb-2 text-sm text-[#717171]">★ 4.7 (89)</p>
+                <p class="mt-3 text-[15px]"><strong>₹3,200</strong> / night</p>
             </article>
 
-            <article class="home-card">
-                <div class="home-image">
-                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=700&q=80"
-                         alt="Modern luxury apartment">
-                    <button class="heart" aria-label="Add to favorites"
-                            type="button">♡</button>
+            <!-- Home 3 -->
+            <article class="min-w-0 cursor-pointer">
+                <div class="relative">
+                    <img
+                        src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=700&q=80"
+                        alt="Modern luxury apartment"
+                        class="h-[250px] w-full rounded-xl object-cover lg:h-[220px]">
+
+                    <button type="button"
+                        aria-label="Add to favorites"
+                        class="favorite absolute right-3 top-3 cursor-pointer bg-transparent text-3xl text-white">
+                        ♡
+                    </button>
                 </div>
-                <h3>Luxury Apartment</h3>
-                <p class="location">Mumbai, India</p>
-                <p class="rating">★ 4.9 (237)</p>
-                <p class="price"><strong>₹6,800</strong> / night</p>
+
+                <h3 class="mb-2 mt-3 text-[17px] font-semibold">Luxury Apartment</h3>
+                <p class="location mb-2 text-sm text-[#717171]">Mumbai, India</p>
+                <p class="mb-2 text-sm text-[#717171]">★ 4.9 (237)</p>
+                <p class="mt-3 text-[15px]"><strong>₹6,800</strong> / night</p>
             </article>
 
-            <article class="home-card">
-                <div class="home-image">
-                    <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=700&q=80"
-                         alt="Beach house overlooking the sea">
-                    <button class="heart" aria-label="Add to favorites"
-                            type="button">♡</button>
+            <!-- Home 4 -->
+            <article class="min-w-0 cursor-pointer">
+                <div class="relative">
+                    <img
+                        src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=700&q=80"
+                        alt="Beach house overlooking the sea"
+                        class="h-[250px] w-full rounded-xl object-cover lg:h-[220px]">
+
+                    <button type="button"
+                        aria-label="Add to favorites"
+                        class="favorite absolute right-3 top-3 cursor-pointer bg-transparent text-3xl text-white">
+                        ♡
+                    </button>
                 </div>
-                <h3>Beach House with Ocean View</h3>
-                <p class="location">Pondicherry, India</p>
-                <p class="rating">★ 4.8 (156)</p>
-                <p class="price"><strong>₹5,200</strong> / night</p>
+
+                <h3 class="mb-2 mt-3 text-[17px] font-semibold">Beach House with Ocean View</h3>
+                <p class="location mb-2 text-sm text-[#717171]">Pondicherry, India</p>
+                <p class="mb-2 text-sm text-[#717171]">★ 4.8 (156)</p>
+                <p class="mt-3 text-[15px]"><strong>₹5,200</strong> / night</p>
             </article>
 
         </div>
     </section>
 
-    <footer>
+    <!-- Footer -->
+    <footer class="border-t border-gray-100 px-[5%] py-6 text-sm text-[#717171] md:px-[6%]">
         © 2026 StayFinder · Privacy · Terms · Help
     </footer>
 
+    <!-- JavaScript -->
     <script>
-        document.querySelectorAll('.heart').forEach(button => {
-            button.addEventListener('click', () => {
-                button.textContent =
-                    button.textContent === '♡' ? '♥' : '♡';
-                button.style.color =
-                    button.textContent === '♥' ? '#ff385c' : 'white';
+        // Toggle favorite button
+        document.querySelectorAll(".favorite").forEach(button => {
+            button.addEventListener("click", () => {
+                const isFavorite = button.textContent.trim() === "♡";
+
+                button.textContent = isFavorite ? "♥" : "♡";
+                button.style.color = isFavorite ? "#ff385c" : "white";
             });
         });
 
-        document.getElementById('searchForm')
-            .addEventListener('submit', function(event) {
-                event.preventDefault();
+        // Search homes by location
+        document.getElementById("searchForm").addEventListener("submit", function (event) {
+            event.preventDefault();
 
-                const location =
-                    document.getElementById('location').value.trim();
+            const location = document.getElementById("location").value.trim().toLowerCase();
 
-                if (!location) {
-                    alert('Please enter a location.');
-                    return;
-                }
+            if (!location) {
+                alert("Please enter a location.");
+                return;
+            }
 
-                const cards =
-                    document.querySelectorAll('.home-card');
+            const cards = document.querySelectorAll("#homeGrid article");
+            let matches = 0;
 
-                let matches = 0;
+            cards.forEach(card => {
+                const city = card.querySelector(".location").textContent.toLowerCase();
+                const visible = city.includes(location);
 
-                cards.forEach(card => {
-                    const city =
-                        card.querySelector('.location')
-                            .textContent.toLowerCase();
+                card.style.display = visible ? "" : "none";
 
-                    const visible =
-                        city.includes(location.toLowerCase());
-
-                    card.style.display = visible ? '' : 'none';
-
-                    if (visible) matches++;
-                });
-
-                document.getElementById('homes')
-                    .scrollIntoView({ behavior: 'smooth' });
-
-                if (matches === 0) {
-                    alert('No sample homes found for ' + location +
-                          '. Try Goa, Manali, Mumbai, or Pondicherry.');
+                if (visible) {
+                    matches++;
                 }
             });
+
+            document.getElementById("homes").scrollIntoView({
+                behavior: "smooth"
+            });
+
+            if (matches === 0) {
+                alert(
+                    "No sample homes found for " + location +
+                    ". Try Goa, Manali, Mumbai, or Pondicherry."
+                );
+            }
+        });
     </script>
 
 </body>
