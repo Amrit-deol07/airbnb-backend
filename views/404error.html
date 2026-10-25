@@ -6,169 +6,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found | Airbnb</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            color: #222;
-            background: #fff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        header {
-            padding: 24px 7%;
-            border-bottom: 1px solid #eee;
-        }
-
-        .logo {
-            color: #ff385c;
-            font-size: 30px;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        main {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 50px 20px;
-        }
-
-        .error-container {
-            max-width: 850px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 45px;
-        }
-
-        .error-content {
-            flex: 1;
-        }
-
-        .error-code {
-            font-size: 100px;
-            font-weight: bold;
-            color: #ff385c;
-            line-height: 1;
-            margin-bottom: 22px;
-        }
-
-        h1 {
-            font-size: 32px;
-            margin-bottom: 16px;
-        }
-
-        .message {
-            font-size: 17px;
-            line-height: 1.7;
-            color: #717171;
-            margin-bottom: 28px;
-        }
-
-        .home-btn {
-            display: inline-block;
-            background: #ff385c;
-            color: white;
-            text-decoration: none;
-            padding: 15px 25px;
-            border-radius: 9px;
-            font-size: 16px;
-            font-weight: bold;
-            transition: background 0.2s;
-        }
-
-        .home-btn:hover {
-            background: #e31c5f;
-        }
-
-        .illustration {
-            flex: 1;
-            text-align: center;
-        }
-
-        .illustration img {
-            width: 100%;
-            max-width: 350px;
-        }
-
-        footer {
-            padding: 25px 7%;
-            background: #f7f7f7;
-            border-top: 1px solid #eee;
-            color: #717171;
-            font-size: 14px;
-            text-align: center;
-        }
-
-        @media (max-width: 650px) {
-            .error-container {
-                flex-direction: column-reverse;
-                text-align: center;
-                gap: 25px;
-            }
-
-            .illustration img {
-                max-width: 220px;
-            }
-
-            .error-code {
-                font-size: 75px;
-            }
-
-            h1 {
-                font-size: 27px;
-            }
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="flex min-h-screen flex-col bg-white font-sans text-[#222]">
 
-    <header>
-        <a href="/" class="logo">⌂ airbnb</a>
+    <!-- Header -->
+    <header class="border-b border-[#eee] px-[7%] py-6">
+        <a href="/" class="text-[30px] font-bold text-[#ff385c] no-underline">
+            ⌂ airbnb
+        </a>
     </header>
 
-    <main>
-        <div class="error-container">
+    <!-- Main Content -->
+    <main class="flex flex-1 items-center justify-center px-5 py-[50px]">
 
-            <div class="error-content">
-                <div class="error-code">404</div>
+        <div class="flex w-full max-w-[850px] items-center justify-between gap-[45px] max-[650px]:flex-col-reverse max-[650px]:gap-[25px] max-[650px]:text-center">
 
-                <h1>Oops! Lost your way?</h1>
+            <!-- Error Message -->
+            <div class="flex-1">
 
-                <p class="message">
+                <div class="mb-[22px] text-[100px] font-bold leading-none text-[#ff385c] max-[650px]:text-[75px]">
+                    404
+                </div>
+
+                <h1 class="mb-4 text-[32px] font-bold max-[650px]:text-[27px]">
+                    Oops! Lost your way?
+                </h1>
+
+                <p class="mb-7 text-[17px] leading-[1.7] text-[#717171]">
                     We can't seem to find the page you're looking for.
                     It might have been moved, deleted, or the link
                     may be incorrect. Don't worry, your next adventure
                     is just one click away.
                 </p>
 
-                <a href="/" class="home-btn">
+                <a
+                    href="/"
+                    class="inline-block rounded-[9px] bg-[#ff385c] px-[25px] py-[15px] text-base font-bold text-white no-underline transition-colors duration-200 hover:bg-[#e31c5f]"
+                >
                     Return to homepage
                 </a>
+
             </div>
 
-            <div class="illustration">
+            <!-- Illustration -->
+            <div class="flex-1 text-center">
+
                 <img
                     src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=700&q=80"
                     alt="Beautiful holiday home by the sea"
+                    class="mx-auto w-full max-w-[350px] rounded-2xl object-cover max-[650px]:max-w-[220px]"
                 >
+
             </div>
 
         </div>
     </main>
 
-    <footer>
+    <!-- Footer -->
+    <footer class="border-t border-[#eee] bg-[#f7f7f7] px-[7%] py-[25px] text-center text-sm text-[#717171]">
         © 2026 Airbnb-style Home Booking Project · Help · Privacy · Terms
     </footer>
 

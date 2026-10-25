@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,179 +6,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Airbnb | Add Your Home</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: #f7f7f7;
-            color: #222;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 22px 7%;
-            background: white;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .logo {
-            color: #ff385c;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        header a {
-            text-decoration: none;
-            color: #222;
-            font-weight: bold;
-        }
-
-        .container {
-            max-width: 750px;
-            margin: 45px auto;
-            padding: 0 20px;
-        }
-
-        h1 {
-            font-size: 34px;
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            color: #717171;
-            margin-bottom: 28px;
-            line-height: 1.5;
-        }
-
-        .form-card {
-            background: white;
-            padding: 32px;
-            border: 1px solid #ddd;
-            border-radius: 16px;
-        }
-
-        .form-group {
-            margin-bottom: 22px;
-        }
-
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 9px;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 14px;
-            border: 1px solid #b0b0b0;
-            border-radius: 9px;
-            font-size: 15px;
-            outline-color: #ff385c;
-        }
-
-        textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        input:focus, textarea:focus {
-            border-color: #ff385c;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 16px;
-            background: #ff385c;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 17px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .submit-btn:hover {
-            background: #e31c5f;
-        }
-
-        .note {
-            color: #717171;
-            font-size: 13px;
-            margin-top: 15px;
-            line-height: 1.5;
-        }
-
-        footer {
-            text-align: center;
-            padding: 25px;
-            color: #717171;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                margin: 25px auto;
-            }
-
-            .form-card {
-                padding: 22px;
-            }
-
-            h1 {
-                font-size: 28px;
-            }
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="m-0 bg-[#f7f7f7] font-sans text-[#222]">
 
-    <header>
-        <div class="logo">⌂ airbnb</div>
-        <a href="/">Home</a>
+    <!-- Header -->
+    <header class="flex items-center justify-between border-b border-gray-200 bg-white px-[7%] py-[22px]">
+        <div class="text-[28px] font-bold text-[#ff385c]">
+            ⌂ airbnb
+        </div>
+
+        <a href="/"
+           class="font-bold text-[#222] no-underline hover:text-[#ff385c]">
+            Home
+        </a>
     </header>
 
-    <main class="container">
-        <h1>List your home</h1>
+    <!-- Main Content -->
+    <main class="mx-auto my-[45px] max-w-[750px] px-5 max-sm:my-[25px]">
 
-        <p class="subtitle">
+        <h1 class="mb-[10px] text-[34px] font-bold max-sm:text-[28px]">
+            List your home
+        </h1>
+
+        <p class="mb-7 leading-relaxed text-[#717171]">
             Share your space with guests and start hosting.
             Add your property details below.
         </p>
 
-        <div class="form-card">
+        <!-- Form Card -->
+        <div class="rounded-2xl border border-gray-200 bg-white p-8 max-sm:p-[22px]">
 
             <form action="/host/add-home" method="POST">
 
-                <div class="form-group">
-                    <label for="title">Property title</label>
+                <!-- Property Title -->
+                <div class="mb-[22px]">
+                    <label for="title"
+                           class="mb-[9px] block font-bold">
+                        Property title
+                    </label>
+
                     <input
                         type="text"
                         id="title"
                         name="title"
                         placeholder="e.g. Beautiful villa near the beach"
                         required
+                        class="w-full rounded-[9px] border border-[#b0b0b0] p-[14px] text-[15px] outline-none focus:border-[#ff385c] focus:ring-1 focus:ring-[#ff385c]"
                     >
                 </div>
 
-                <div class="form-group">
-                    <label for="description">Description</label>
+                <!-- Description -->
+                <div class="mb-[22px]">
+                    <label for="description"
+                           class="mb-[9px] block font-bold">
+                        Description
+                    </label>
+
                     <textarea
                         id="description"
                         name="description"
                         placeholder="Describe your home, facilities and nearby attractions..."
                         required
+                        class="min-h-[120px] w-full resize-y rounded-[9px] border border-[#b0b0b0] p-[14px] text-[15px] outline-none focus:border-[#ff385c] focus:ring-1 focus:ring-[#ff385c]"
                     ></textarea>
                 </div>
 
-                <div class="form-group">
-                    <label for="price">Price per night (₹)</label>
+                <!-- Price -->
+                <div class="mb-[22px]">
+                    <label for="price"
+                           class="mb-[9px] block font-bold">
+                        Price per night (₹)
+                    </label>
+
                     <input
                         type="number"
                         id="price"
@@ -185,35 +87,52 @@
                         placeholder="e.g. 2500"
                         min="1"
                         required
+                        class="w-full rounded-[9px] border border-[#b0b0b0] p-[14px] text-[15px] outline-none focus:border-[#ff385c] focus:ring-1 focus:ring-[#ff385c]"
                     >
                 </div>
 
-                <div class="form-group">
-                    <label for="location">Location</label>
+                <!-- Location -->
+                <div class="mb-[22px]">
+                    <label for="location"
+                           class="mb-[9px] block font-bold">
+                        Location
+                    </label>
+
                     <input
                         type="text"
                         id="location"
                         name="location"
                         placeholder="e.g. Goa, India"
                         required
+                        class="w-full rounded-[9px] border border-[#b0b0b0] p-[14px] text-[15px] outline-none focus:border-[#ff385c] focus:ring-1 focus:ring-[#ff385c]"
                     >
                 </div>
 
-                <div class="form-group">
-                    <label for="image">Property image URL</label>
+                <!-- Property Image -->
+                <div class="mb-[22px]">
+                    <label for="image"
+                           class="mb-[9px] block font-bold">
+                        Property image URL
+                    </label>
+
                     <input
                         type="url"
                         id="image"
                         name="image"
                         placeholder="https://example.com/property.jpg"
+                        class="w-full rounded-[9px] border border-[#b0b0b0] p-[14px] text-[15px] outline-none focus:border-[#ff385c] focus:ring-1 focus:ring-[#ff385c]"
                     >
                 </div>
 
-                <button type="submit" class="submit-btn">
+                <!-- Submit Button -->
+                <button
+                    type="submit"
+                    class="w-full cursor-pointer rounded-[10px] border-0 bg-[#ff385c] p-4 text-[17px] font-bold text-white transition-colors duration-200 hover:bg-[#e31c5f] focus:outline-none focus:ring-2 focus:ring-[#ff385c] focus:ring-offset-2"
+                >
                     Add Your Home
                 </button>
 
-                <p class="note">
+                <p class="mt-[15px] text-[13px] leading-relaxed text-[#717171]">
                     Please provide accurate property details.
                     Your listing will be submitted to the server.
                 </p>
@@ -222,7 +141,8 @@
         </div>
     </main>
 
-    <footer>
+    <!-- Footer -->
+    <footer class="px-6 py-[25px] text-center text-[#717171]">
         © 2026 Airbnb-style Home Booking Project
     </footer>
 

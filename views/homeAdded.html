@@ -6,166 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Added Successfully | Airbnb</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #fff;
-            color: #222;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        header {
-            padding: 22px 7%;
-            border-bottom: 1px solid #eee;
-        }
-
-        .logo {
-            color: #ff385c;
-            font-size: 29px;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        main {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 35px 20px;
-        }
-
-        .success-card {
-            width: 100%;
-            max-width: 520px;
-            text-align: center;
-            padding: 45px 35px;
-            border: 1px solid #eee;
-            border-radius: 20px;
-            box-shadow: 0 8px 30px #0000000d;
-        }
-
-        .success-icon {
-            width: 90px;
-            height: 90px;
-            background: #e8f8ed;
-            color: #16803c;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            margin: 0 auto 25px;
-        }
-
-        h1 {
-            font-size: 30px;
-            margin-bottom: 15px;
-        }
-
-        .message {
-            color: #717171;
-            font-size: 16px;
-            line-height: 1.7;
-            margin-bottom: 30px;
-        }
-
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .btn {
-            display: block;
-            text-decoration: none;
-            padding: 15px;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 16px;
-            transition: 0.2s;
-        }
-
-        .primary {
-            background: #ff385c;
-            color: white;
-        }
-
-        .primary:hover {
-            background: #e31c5f;
-        }
-
-        .secondary {
-            background: white;
-            color: #222;
-            border: 1px solid #222;
-        }
-
-        .secondary:hover {
-            background: #f7f7f7;
-        }
-
-        footer {
-            padding: 23px;
-            background: #f7f7f7;
-            border-top: 1px solid #eee;
-            color: #717171;
-            text-align: center;
-            font-size: 14px;
-        }
-
-        @media (max-width: 500px) {
-            .success-card {
-                padding: 35px 20px;
-            }
-
-            h1 {
-                font-size: 25px;
-            }
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="flex min-h-screen flex-col bg-white font-sans text-[#222]">
 
-    <header>
-        <a href="/" class="logo">⌂ airbnb</a>
+    <!-- Header -->
+    <header class="border-b border-[#eee] px-[7%] py-[22px]">
+        <a href="/" class="text-[29px] font-bold text-[#ff385c] no-underline">
+            ⌂ airbnb
+        </a>
     </header>
 
-    <main>
-        <section class="success-card">
+    <!-- Main Content -->
+    <main class="flex flex-1 items-center justify-center px-5 py-[35px]">
 
-            <div class="success-icon">✓</div>
+        <!-- Success Card -->
+        <section class="w-full max-w-[520px] rounded-[20px] border border-[#eee] px-[35px] py-[45px] text-center shadow-[0_8px_30px_#0000000d] max-[500px]:px-5 max-[500px]:py-[35px]">
 
-            <h1>Home Added Successfully!</h1>
+            <!-- Success Icon -->
+            <div class="mx-auto mb-[25px] flex h-[90px] w-[90px] items-center justify-center rounded-full bg-[#e8f8ed] text-[48px] text-[#16803c]">
+                ✓
+            </div>
 
-            <p class="message">
+            <h1 class="mb-[15px] text-[30px] font-bold max-[500px]:text-[25px]">
+                Home Added Successfully!
+            </h1>
+
+            <p class="mb-[30px] text-base leading-[1.7] text-[#717171]">
                 Congratulations! Your home details have been
                 submitted successfully. Thank you for sharing
                 your space with our community.
             </p>
 
-            <div class="buttons">
-                <a href="/" class="btn primary">
+            <!-- Buttons -->
+            <div class="flex flex-col gap-[14px]">
+
+                <a
+                    href="/"
+                    class="block rounded-[10px] bg-[#ff385c] p-[15px] text-base font-bold text-white no-underline transition-colors duration-200 hover:bg-[#e31c5f]"
+                >
                     Go to Homepage
                 </a>
 
-                <a href="/host/add-home" class="btn secondary">
+                <a
+                    href="/host/add-home"
+                    class="block rounded-[10px] border border-[#222] bg-white p-[15px] text-base font-bold text-[#222] no-underline transition-colors duration-200 hover:bg-[#f7f7f7]"
+                >
                     Add Another Home
                 </a>
+
             </div>
 
         </section>
     </main>
 
-    <footer>
+    <!-- Footer -->
+    <footer class="border-t border-[#eee] bg-[#f7f7f7] p-[23px] text-center text-sm text-[#717171]">
         © 2026 Airbnb-style Home Booking Project · Help · Privacy · Terms
     </footer>
 
